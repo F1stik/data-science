@@ -216,3 +216,27 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# === Data Science / Анализ данных ===
+# Не коммитим сырые и обработанные данные
+*.csv
+*.xlsx
+*.xls
+*.xlsm
+*.parquet
+*.feather
+*.db
+*.sqlite
+
+# Папки с данными
+data/
+final_project/data/
+raw_data/
+processed_data/
+
+# Большие файлы и кэш
+*.zip
+*.tar.gz
+*.7z
+
+# Локальные настройки проекта
+.local/
