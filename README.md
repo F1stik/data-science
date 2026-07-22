@@ -8,7 +8,6 @@
 - [x] Установка инструментов (Anaconda + Git + Juputer)
 - [x] Базовый Python(циклы,функции,списки,словари)
 - [ ] NumPy и Pandas
-- [ ] 
 - [x] Визуализация данных: Matplotlib и Seaborn
 - [ ] SQL и работа с базами данных
 - [ ] Математика для Data Science
