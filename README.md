@@ -1,24 +1,19 @@
 # Data Science Learning 2026
 
-Мой учебный путь в **Data Analysis** с помощью Python (2026–2027).
+Мой учебный путь в **Data Analysis** (2026–2027).
 
-Цель: перейти в профессию Data Analyst / Business Intelligence Analyst.
+Цель: Data Analyst.
 
 ## Прогресс
-- [x] Установка инструментов (Anaconda + Git)
-- [x] Базовый Python
-- [ ] NumPy
-- [ ] Pandas
-- [ ] Визуализация данных
-- [ ] SQL
+- [x] Установка инструментов (Anaconda + Git + Juputer)
+- [x] Базовый Python(циклы,функции,списки,словари)
+- [ ] NumPy и Pandas
+- [ ] 
+- [x] Визуализация данных: Matplotlib и Seaborn
+- [ ] SQL и работа с базами данных
+- [ ] Математика для Data Science
+- [ ] Статистика и A/B-тесты
+- [ ] Машинное обучение
 - [ ] Проекты для портфолио
 
-## Структура проекта
-- `notebooks/` — Jupyter notebooks с практикой
-- `data/` — датасеты
-- `projects/` — готовые проекты для портфолио
 
-## Как запускать
-```bash
-conda activate ds2026
-jupyter lab

@@ -1,19 +1,16 @@
 import pandas as pd
 
-# ====================== НАСТРОЙКИ ======================
-# Укажи путь к своему файлу выписки
+# путь к файлу выписки
 FILE_PATH = "D:\Python\project\data-science\data\raw\bsb_bank_statement.csv"   # <-- измени на свой путь
 
-# ====================== ЗАГРУЗКА И ПОДГОТОВКА ======================
 import pandas as pd
 import json
 from pathlib import Path
 
-# ====================== НАСТРОЙКИ ======================
 FILE_PATH = "bsb_bank_statement.csv"          # путь к выписке
 MAP_FILE = "exact_map.json"                   # файл, куда сохраняем разметку
 
-# ====================== ЗАГРУЗКА ДАННЫХ ======================
+
 df = pd.read_csv(r'D:\Python\project\data-science\data\raw\bsb_bank_statement.csv')
 
 df.columns = [
@@ -32,7 +29,7 @@ df['place'] = (
     .str.strip()
 )
 
-# ====================== ЗАГРУЗКА УЖЕ СУЩЕСТВУЮЩЕЙ РАЗМЕТКИ ======================
+# ЗАГРУЗКА УЖЕ СУЩЕСТВУЮЩЕЙ РАЗМЕТКИ
 if Path(MAP_FILE).exists():
     with open(MAP_FILE, "r", encoding="utf-8") as f:
         exact_map = json.load(f)
@@ -41,7 +38,7 @@ else:
     exact_map = {}
     print("Файл разметки не найден — начинаем с нуля\n")
 
-# ====================== ФУНКЦИЯ КАТЕГОРИЙ ======================
+# =ФУНКЦИЯ КАТЕГОРИЙ
 def get_category(place):
     if pd.isna(place):
         return 'Прочее'
@@ -52,7 +49,7 @@ def get_category(place):
     if place in exact_map:
         return exact_map[place]
     
-    # Дальше правила
+    # правила
     if any(word in place for word in ['PERSON TO PERSON', 'INTERNET-BANKING']):
         return 'Аренда'
     if any(word in place for word in ['SOSEDI', 'SANTA', 'EVROOPT', 'EUROOPT', 'UNIVERSAM', 'GIPPO', 'GREEN', 'MILA', 'GALAMART', 'PROSTORE', 'ALMI', 'IZYUM', 'KOPEECHKA', 'KARAVAY', 'NASHA LAVKA', 'MAYAK', 'TRI TSENY', 'FIX PRICE', 'SUPERPROD', 'PRODUKTY', 'N9869', 'IZYSKANNAYA KUHN', 'TM N3']):
@@ -90,7 +87,7 @@ def get_category(place):
 
 df['category'] = df['place'].apply(get_category)
 
-# ====================== ИНТЕРАКТИВНАЯ РАЗМЕТКА ======================
+#
 prochee_places = (
     df[df['category'] == 'Прочее']
     .groupby('place')['amount']
@@ -152,7 +149,6 @@ try:
 except KeyboardInterrupt:
     print("\n\nСкрипт остановлен пользователем (Ctrl+C)")
 
-# ====================== ИТОГ ======================
 print("\n" + "=" * 60)
 print(f"Всего размечено мест: {len(exact_map)}")
 print(f"Файл сохранён: {MAP_FILE}")
